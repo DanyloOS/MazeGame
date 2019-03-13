@@ -2,19 +2,33 @@
 #include <conio.h>
 using namespace std;
 
-char Map[10][10];
+static char Map[10][10];
+struct PlayerXY
+{
+    int x;
+    int y;
+} static player;
 
-void getMapFromTxt();
+//void getMapFromTxt();
+void fillMap();
 void printMap();
+void getUserMove();
+void movePlayer();
 void logic();
 bool isGameOver();
+void setUp();
 
 
 int main()
 {
     cout << "press any key to start the game\n";
     getch();
-    while(isGameOver()){
 
+    setUp();
+    while(isGameOver() != 1){
+      getUserMove();
+      movePlayer();
+      logic();
+      printMap();
     }
 }
