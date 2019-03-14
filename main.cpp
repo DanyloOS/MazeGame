@@ -4,11 +4,10 @@
 
 using namespace std;
 
-static
-const int SIZEOFMAP = 10;
+static const int SIZEOFMAP = 10;
 static bool IsGameOver = 0;
 
-static char Map[10][10];
+static char Map[SIZEOFMAP][SIZEOFMAP];
 struct PlayerXY
 {
     int x;
@@ -52,8 +51,8 @@ inline void getMapFromTxt()
         return;
     }
 
-    for (int y = 0; !fileMap.eof(); y++) {
-        fileMap.getline(Map[y],11,'\n');
+    for (int x = 0; !fileMap.eof(); x++) {
+        fileMap.getline(Map[x],SIZEOFMAP + 1,'\n');
     }
 
     fileMap.close();
@@ -63,8 +62,8 @@ inline void printMap()
     system("cls");
     Map[player.x][player.y] = '8';
 
-    for(int y = 0; y < 10; y++){
-        for(auto symbol : Map[y])
+    for(int x = 0; x < SIZEOFMAP; x++){
+        for(auto symbol : Map[x])
             switch (symbol) {
             case '0': {
                cout << " ";
